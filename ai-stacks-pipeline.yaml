@@ -1,0 +1,11 @@
+kind: "BuildConfig"
+apiVersion: "v1"
+metadata:
+  name: "ai-stacks-pipeline"
+spec:
+  source:
+    git:
+      uri: "https://github.com/goern/AI-Stacks-pipeline"
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfilePath: Jenkinsfile
