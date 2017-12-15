@@ -1,8 +1,6 @@
 #!/usr/bin/groovy
 package com.redhat.aicoe.pipeline
 
-import groovy.json.JsonSlurper
-
 /**
  * create BuildConfigs from templates
  * @param openshiftProject Openshift Project
