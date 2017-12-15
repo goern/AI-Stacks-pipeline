@@ -70,7 +70,7 @@ pipeline {
         stage("Setup Build Templates") {
             steps {
                 script {
-                    AIStacksPipelineUtils.createBuildConfigs(OPENSHIFT_NAMESPACE)
+                    aIStacksPipelineUtils.createBuildConfigs(OPENSHIFT_NAMESPACE)
                 }
             }
         }
