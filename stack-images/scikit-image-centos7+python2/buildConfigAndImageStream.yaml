@@ -1,28 +1,28 @@
 apiVersion: v1
 kind: Template
 labels:
-  template: tensorflow-centos7-python3-builder
+  template: scikit-image-centos7-python2-builder
 metadata:
   annotations:
-    description: tensorflow-centos7-python3 container
-    iconClass: tensorflow
+    description: scikit-image-centos7-python2 container
+    iconClass: scikit-image
     tags: ai-stack-builder
-  name: tensorflow-centos7-python3-builder
+  name: scikit-image-centos7-python2-builder
 objects:
 - apiVersion: v1
   kind: ImageStream
   metadata:
-    name: tensorflow-centos7-python3
+    name: scikit-image-centos7-python2
   spec: {}
 - apiVersion: v1
   kind: BuildConfig
   metadata:
-    name: tensorflow-centos7-python3
+    name: scikit-image-centos7-python2
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: tensorflow-centos7-python3:latest
+        name: scikit-image-centos7-python2:latest
     resources: {}
     source:
       contextDir: ${REPO_CONTEXTDIR}
@@ -34,7 +34,7 @@ objects:
       dockerStrategy:
         env:
           - name: CONTAINER_NAME
-            value: tensorflow-centos7-python3
+            value: scikit-image-centos7-python2
       type: Docker
     triggers:
     - type: ConfigChange
@@ -46,7 +46,7 @@ parameters:
 - description: The sub-directory inside the repository.
   displayName: Context Directory
   name: REPO_CONTEXTDIR
-  value: pipeline-images/tensorflow-centos7+python3
+  value: stack-images/scikit-image-centos7+python2
 - description: The git ref or tag to use for customization.
   displayName: Git Reference
   name: REPO_REF

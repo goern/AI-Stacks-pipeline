@@ -46,7 +46,7 @@ parameters:
 - description: The sub-directory inside the repository.
   displayName: Context Directory
   name: REPO_CONTEXTDIR
-  value: pipeline-images/scikit-image-centos7+python3
+  value: stack-images/scikit-image-centos7+python3
 - description: The git ref or tag to use for customization.
   displayName: Git Reference
   name: REPO_REF

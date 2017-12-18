@@ -1,28 +1,28 @@
 apiVersion: v1
 kind: Template
 labels:
-  template: gcc630-centos7-builder
+  template: tensorflow-centos7-python3-builder
 metadata:
   annotations:
-    description: gcc630-centos7 container
+    description: tensorflow-centos7-python3 container
     iconClass: tensorflow
     tags: ai-stack-builder
-  name: gcc630-centos7-builder
+  name: tensorflow-centos7-python3-builder
 objects:
 - apiVersion: v1
   kind: ImageStream
   metadata:
-    name: gcc630-centos7
+    name: tensorflow-centos7-python3
   spec: {}
 - apiVersion: v1
   kind: BuildConfig
   metadata:
-    name: gcc630-centos7
+    name: tensorflow-centos7-python3
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: gcc630-centos7:latest
+        name: tensorflow-centos7-python3:latest
     resources: {}
     source:
       contextDir: ${REPO_CONTEXTDIR}
@@ -34,7 +34,7 @@ objects:
       dockerStrategy:
         env:
           - name: CONTAINER_NAME
-            value: gcc630-centos7
+            value: tensorflow-centos7-python3
       type: Docker
     triggers:
     - type: ConfigChange
@@ -46,7 +46,7 @@ parameters:
 - description: The sub-directory inside the repository.
   displayName: Context Directory
   name: REPO_CONTEXTDIR
-  value: pipeline-images/gcc630-centos7
+  value: stack-images/tensorflow-centos7+python3
 - description: The git ref or tag to use for customization.
   displayName: Git Reference
   name: REPO_REF
