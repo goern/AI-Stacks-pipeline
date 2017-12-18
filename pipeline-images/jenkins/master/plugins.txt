@@ -38,7 +38,7 @@ docker-workflow:1.14
 durable-task:1.16
 favorite:2.3.1
 git:3.6.4
-git-client:2.6.0
+git-client:2.7.0
 github:1.28.1
 github-api:1.90
 github-branch-source:2.3.2
@@ -50,7 +50,7 @@ htmlpublisher:1.14
 icon-shim:2.0.3
 instant-messaging:1.35
 ircbot:2.30
-jackson2-api:2.8.7.0
+jackson2-api:2.8.10.1
 javadoc:1.4
 jira:2.5
 jms-messaging:1.0.31
@@ -76,7 +76,7 @@ openshift-login:1.0.0
 openshift-pipeline:1.0.52
 openshift-sync:0.1.32
 parameterized-trigger:2.35.2
-pipeline-build-step:2.5.1
+pipeline-build-step:2.6
 pipeline-github-lib:1.0
 pipeline-graph-analysis:1.5
 pipeline-input-step:2.8
@@ -101,7 +101,7 @@ sse-gateway:1.15
 ssh-credentials:1.13
 ssh-slaves:1.22
 structs:1.10
-subversion:2.9
+subversion:2.10.2
 support-core:2.43
 text-finder:1.10
 timestamper:1.8.8
