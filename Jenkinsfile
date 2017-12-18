@@ -17,6 +17,9 @@ tagMap = [:]
 // Initialize
 tagMap['tensorflow-fedora27'] = STABLE_LABEL
 tagMap['tensorflow-centos7-python3'] = STABLE_LABEL
+tagMap['scikit-image-centos7-python3'] = STABLE_LABEL
+tagMap['scikit-image-centos7-python2'] = STABLE_LABEL
+tagMap['gcc630-centos7'] = STABLE_LABEL
 
 // IRC properties
 IRC_NICK = "ai-coe-bot"
@@ -102,6 +105,27 @@ pipeline {
                     steps { // FIXME we could have a conditional build here
                         script {
                             tagMap['tensorflow-centos7-python3'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "tensorflow-centos7-python3")
+                        }
+                    }                
+                }
+                stage("Scikit-Image: CentOS7+Python3") {
+                    steps { // FIXME we could have a conditional build here
+                        script {
+                            tagMap['scikit-image-centos7-python3'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "scikit-image-centos7-python3")
+                        }
+                    }                
+                }
+                stage("Scikit-Image: CentOS7+Python2") {
+                    steps { // FIXME we could have a conditional build here
+                        script {
+                            tagMap['scikit-image-centos7-python2'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "scikit-image-centos7-python2")
+                        }
+                    }                
+                }
+                stage("GCC 6.3.0: CentOS7") {
+                    steps { // FIXME we could have a conditional build here
+                        script {
+                            tagMap['gcc630-centos7'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "gcc630-centos7")
                         }
                     }                
                 }
