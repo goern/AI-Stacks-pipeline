@@ -7,6 +7,9 @@ DOCKER_REPO_URL = '172.30.254.79:5000'
 env.ghprbGhRepository = env.ghprbGhRepository ?: 'goern/AI-Stacks-pipeline'
 env.ghprbActualCommit = env.ghprbActualCommit ?: 'master'
 
+// Fedora Fedmsg Message Provider for stage
+MSG_PROVIDER = "fedora-fedmsg-devel"
+
 // If this PR does not include an image change, then use this tag
 STABLE_LABEL = "stable"
 tagMap = [:]
