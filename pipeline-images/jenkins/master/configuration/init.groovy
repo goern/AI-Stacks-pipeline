@@ -20,7 +20,7 @@ FedMsgMessagingProvider fedmsgStage = new FedMsgMessagingProvider("fedora-fedmsg
 GlobalCIConfiguration.get().addMessageProvider(fedmsgStage)
 
 logger.info("Setup fedora-fedmsg-devel Messaging Provider")
-FedMsgMessagingProvider fedmsgDevel = new FedMsgMessagingProvider("fedora-fedmsg-devel", "tcp://fedmsg-relay.continuous-infra.svc:4001", "tcp://fedmsg-relay.continuous-infra.svc:2003", "org.fedoraproject");
+FedMsgMessagingProvider fedmsgDevel = new FedMsgMessagingProvider("fedora-fedmsg-devel", "tcp://fedmsg-relay.ai-coe.svc:4001", "tcp://fedmsg-relay.ai-coe.svc:2003", "org.fedoraproject");
 GlobalCIConfiguration.get().addMessageProvider(fedmsgDevel)
 
 logger.info("Setting Time Zone to be UTC")
