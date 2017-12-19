@@ -16,6 +16,7 @@ tagMap = [:]
 
 // Initialize
 tagMap['tensorflow-fedora27'] = STABLE_LABEL
+tagMap['tensorflow-fedora27-test'] = STABLE_LABEL
 tagMap['tensorflow-centos7-python3'] = STABLE_LABEL
 tagMap['scikit-image-centos7-python3'] = STABLE_LABEL
 tagMap['scikit-image-centos7-python2'] = STABLE_LABEL
@@ -98,8 +99,9 @@ pipeline {
                     steps { // FIXME we could have a conditional build here
                         script {
                             tagMap['tensorflow-fedora27'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "tensorflow-fedora27")
+                            tagMap['tensorflow-fedora27-test'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "tensorflow-fedora27-test")
                         }
-                    }                
+                    }                     
                 }
                 stage("Tensorflow: CentOS7+Python3") {
                     steps { // FIXME we could have a conditional build here

@@ -15,6 +15,11 @@ objects:
     name: tensorflow-fedora27
   spec: {}
 - apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: tensorflow-fedora27-test
+  spec: {}
+- apiVersion: v1
   kind: BuildConfig
   metadata:
     name: tensorflow-fedora27
@@ -38,6 +43,34 @@ objects:
       type: Docker
     triggers:
     - type: ConfigChange
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    name: tensorflow-fedora27-test
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: tensorflow-fedora27-test:latest
+    resources: {}
+    source:
+      contextDir: ${REPO_CONTEXTDIR}/tests
+      git:
+        ref: ${REPO_REF}
+        uri: ${REPO_URL}
+      type: Git
+    strategy:
+      dockerStrategy:
+        env:
+          - name: CONTAINER_NAME
+            value: tensorflow-fedora27-test
+      type: Docker
+    triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChange:
+        kind: ImageStreamTag
+        name: tensorflow-fedora27:latest
 parameters:
 - description: Git repository with Dockerfile and slave entrypoint.
   displayName: Repository URL
