@@ -30,9 +30,9 @@ def buildImageWithTag(String openshiftProject, String buildConfig, String tag) {
     // - Use that to create a tag
     openshift.withCluster() {
         openshift.withProject(openshiftProject) {
-            def result = openshift.startBuild(buildConfig,
-                    "--wait")
+            def result = openshift.startBuild(buildConfig, "--wait")
             def out = result.out.trim()
+            
             echo "Resulting Build: " + out
 
             def describeStr = openshift.selector(out).describe()

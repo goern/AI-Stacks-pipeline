@@ -95,9 +95,12 @@ pipeline {
             parallel {
                 stage("Tensorflow: Fedora27") {
                     steps { // FIXME we could have a conditional build here
+                        echo "Building Tensorflow container image..."
                         script {
                             tagMap['tensorflow-fedora27'] = aIStacksPipelineUtils.buildImageWithTag(OPENSHIFT_NAMESPACE, "tensorflow-fedora27", '1.4.1')
                         }
+
+                        echo "Building Tensorflow Test container image..."
                         script {
                             tagMap['tensorflow-fedora27-test'] = aIStacksPipelineUtils.buildImageWithTag(OPENSHIFT_NAMESPACE, "tensorflow-fedora27-test", '1.4.1')
                         }
