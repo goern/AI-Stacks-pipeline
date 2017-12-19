@@ -99,6 +99,8 @@ pipeline {
                     steps { // FIXME we could have a conditional build here
                         script {
                             tagMap['tensorflow-fedora27'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "tensorflow-fedora27")
+                        }
+                        script {
                             tagMap['tensorflow-fedora27-test'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "tensorflow-fedora27-test")
                         }
                     }          
@@ -124,13 +126,13 @@ pipeline {
                         }
                     }                
                 }
-                stage("GCC 6.3.0: CentOS7") {
+/*                stage("GCC 6.3.0: CentOS7") {
                     steps { // FIXME we could have a conditional build here
                         script {
                             tagMap['gcc630-centos7'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "gcc630-centos7")
                         }
                     }                
-                }
+                } */
             }
         }
         stage("Run Tests") {
