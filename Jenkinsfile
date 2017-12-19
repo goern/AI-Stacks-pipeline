@@ -33,14 +33,6 @@ properties(
     ]
 )
 
-library identifier: "cico-pipeline-library@master",
-        retriever: modernSCM([$class: 'GitSCMSource',
-                              remote: "https://github.com/CentOS/cico-pipeline-library",
-                              traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'],
-                                       [$class: 'RefSpecsSCMSourceTrait',
-                                        templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*'],
-                                                    [value: '+refs/pull/*:refs/remotes/origin/pr/*']]]]]
-                            )
 
 library(identifier: "ci-pipeline@master",
         retriever: modernSCM([$class: 'GitSCMSource',
@@ -50,13 +42,6 @@ library(identifier: "ci-pipeline@master",
                                         templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*']]]]])
                             )
 
-library(identifier: "ai-stacks-pipeline@master",
-        retriever: modernSCM([$class: 'GitSCMSource',
-                              remote: "https://github.com/goern/AI-Stacks-pipeline",
-                              traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'],
-                                       [$class: 'RefSpecsSCMSourceTrait',
-                                        templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*']]]]])
-                            )
 
 pipeline {
     agent {
@@ -98,10 +83,10 @@ pipeline {
                 stage("Tensorflow: Fedora27") {
                     steps { // FIXME we could have a conditional build here
                         script {
-                            tagMap['tensorflow-fedora27'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "tensorflow-fedora27")
+                            tagMap['tensorflow-fedora27'] = pipelineUtils.buildImageWithTag(OPENSHIFT_NAMESPACE, "tensorflow-fedora27", '1.4.1')
                         }
                         script {
-                            tagMap['tensorflow-fedora27-test'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "tensorflow-fedora27-test")
+                            tagMap['tensorflow-fedora27-test'] = pipelineUtils.buildImageWithTag(OPENSHIFT_NAMESPACE, "tensorflow-fedora27-test", '1.4.1')
                         }
                     }          
                 }

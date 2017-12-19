@@ -9,11 +9,22 @@ class aIStacksPipelineUtils implements Serializable {
     def aIStacksPipelineUtils = new AIStacksPipelineUtils()
 
     /**
-     * create BuildConfigs from templates
+     * TODO create BuildConfigs from templates
      * @param openshiftProject Openshift Project
      * @return
      */
     def createBuildConfigs(String openshiftProject) {
         return aIStacksPipelineUtils.createBuildConfigs(openshiftProject)
+    }
+
+    /**
+    * Build container image in OpenShift and tag it
+    * @param openshiftProject OpenShift Project
+    * @param buildConfig
+    * @param tag
+    * @return
+    */
+    def buildImageWithTag(String openshiftProject, String buildConfig, String tag) {
+        retyrb aIStacksPipelineUtils.buildImageWithTag(openshiftProject, buildConfig, tag)
     }
 }
