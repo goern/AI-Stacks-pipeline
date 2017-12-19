@@ -67,10 +67,6 @@ objects:
       type: Docker
     triggers:
     - type: ConfigChange
-    - type: ImageChange
-      imageChange:
-        kind: ImageStreamTag
-        name: tensorflow-fedora27:latest
 parameters:
 - description: Git repository with Dockerfile and slave entrypoint.
   displayName: Repository URL
