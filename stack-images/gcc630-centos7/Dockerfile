@@ -8,7 +8,7 @@ FROM centos:7
 RUN yum -y install wget && \
     yum -y --enablerepo=extras install epel-release && \
     yum -y update && \
-    yum -y install cmake gcc gcc-c++ git make patch pciutils unzip vim-enhanced && \
+    yum -y install cmake gcc gcc-c++ git make patch pciutils unzip vim-enhanced bzip2 && \
     cd /var/cache && rm -rf dnf yum
 
 RUN mkdir -p /tmp/gcc_tmp_build_dir && \

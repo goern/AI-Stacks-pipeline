@@ -99,12 +99,6 @@ pipeline {
                     steps { // FIXME we could have a conditional build here
                         script {
                             tagMap['tensorflow-fedora27'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "tensorflow-fedora27")
-                        }
-                    }
-                }
-                stage("Tensorflow-Test: Fedora27") {
-                    steps {
-                        script {
                             tagMap['tensorflow-fedora27-test'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "tensorflow-fedora27-test")
                         }
                     }          
