@@ -50,7 +50,7 @@ library(identifier: "ci-pipeline@master",
                             )
 library(identifier: "ai-stacks-pipeline@master",
         retriever: modernSCM([$class: 'GitSCMSource',
-                              remote: "https://github.com/goern/AI-Stacks",
+                              remote: "https://github.com/goern/AI-Stacks-pipeline",
                               traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'],
                                        [$class: 'RefSpecsSCMSourceTrait',
                                         templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*']]]]])
