@@ -15,8 +15,8 @@ STABLE_LABEL = "stable"
 tagMap = [:]
 
 // Initialize
-tagMap['tensorflow-fedora27'] = STABLE_LABEL
-tagMap['tensorflow-fedora27-test'] = STABLE_LABEL
+tagMap['tensorflow-fedora27'] = '1.4.1'
+tagMap['tensorflow-fedora27-test'] = '1.4.1'
 tagMap['tensorflow-centos7-python3'] = STABLE_LABEL
 tagMap['scikit-image-centos7-python3'] = STABLE_LABEL
 tagMap['scikit-image-centos7-python2'] = STABLE_LABEL
