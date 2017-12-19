@@ -34,6 +34,13 @@ properties(
 )
 
 
+library(identifier: "cico-pipeline-library@master",
+        retriever: modernSCM([$class: 'GitSCMSource',
+                              remote: "https://github.com/CentOS/cico-pipeline-library",
+                              traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'],
+                                       [$class: 'RefSpecsSCMSourceTrait',
+                                        templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*']]]]])
+                            )
 library(identifier: "ci-pipeline@master",
         retriever: modernSCM([$class: 'GitSCMSource',
                               remote: "https://github.com/CentOS-PaaS-SIG/ci-pipeline",
@@ -41,7 +48,13 @@ library(identifier: "ci-pipeline@master",
                                        [$class: 'RefSpecsSCMSourceTrait',
                                         templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*']]]]])
                             )
-
+library(identifier: "ai-stacks-pipeline@master",
+        retriever: modernSCM([$class: 'GitSCMSource',
+                              remote: "https://github.com/goern/AI-Stacks",
+                              traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'],
+                                       [$class: 'RefSpecsSCMSourceTrait',
+                                        templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*']]]]])
+                            )
 
 pipeline {
     agent {
