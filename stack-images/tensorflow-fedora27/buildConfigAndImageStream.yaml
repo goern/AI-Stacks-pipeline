@@ -60,11 +60,14 @@ objects:
         uri: ${REPO_URL}
       type: Git
     strategy:
+      type: Docker
       dockerStrategy:
         env:
-          - name: CONTAINER_NAME
-            value: tensorflow-fedora27-test
-      type: Docker
+        - name: CONTAINER_NAME
+          value: tensorflow-fedora27-test
+        from:
+          kind: ImageStreamTag
+          name: tensorflow-fedora27:${TENSORFLOW_VERSION}
     triggers:
     - type: ConfigChange
 parameters:
@@ -76,6 +79,10 @@ parameters:
   displayName: Context Directory
   name: REPO_CONTEXTDIR
   value: stack-images/tensorflow-fedora27
+- description: Tensorflow version.
+  displayName: Tensorflow version
+  name: TENSORFLOW_VERSION
+  value: 1.4.1
 - description: The git ref or tag to use for customization.
   displayName: Git Reference
   name: REPO_REF

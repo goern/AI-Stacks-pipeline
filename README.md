@@ -21,3 +21,8 @@ cd stack-images/ ; for d in `ls -1` ; do oc process -f ${d}/buildConfigAndImageS
 ## Cleanup and Garbage Collection
 
 `oc adm prune builds --confirm --namespace ai-coe`
+
+# Known Issues
+
+* location of image in tensorflow test Dockerfile
+* version used for tensorflow is in Jenkinsfile and BC template as a parameter
