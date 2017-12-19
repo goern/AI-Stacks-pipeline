@@ -25,6 +25,6 @@ class aIStacksPipelineUtils implements Serializable {
     * @return
     */
     def buildImageWithTag(String openshiftProject, String buildConfig, String tag) {
-        retyrb aIStacksPipelineUtils.buildImageWithTag(openshiftProject, buildConfig, tag)
+        return aIStacksPipelineUtils.buildImageWithTag(openshiftProject, buildConfig, tag)
     }
 }
