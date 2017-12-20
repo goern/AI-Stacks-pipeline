@@ -16,6 +16,8 @@ oc create -f ai-stacks-pipeline.yaml
 cd stack-images/ ; for d in `ls -1` ; do oc process -f ${d}/buildConfigAndImageStream.yaml | oc create -f - ; done ; cd ..
 ```
 
+FIXME radanalytics will fail with this for-loop!
+
 # Operations
 
 ## Cleanup and Garbage Collection

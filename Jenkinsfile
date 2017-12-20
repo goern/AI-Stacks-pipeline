@@ -22,6 +22,8 @@ tagMap['scikit-image-centos7-python3'] = STABLE_LABEL
 tagMap['scikit-image-centos7-python2'] = STABLE_LABEL
 tagMap['gcc630-centos7'] = STABLE_LABEL
 tagMap['tensorflow-neural-style-s2i'] = STABLE_LABEL
+tagMap['tensorflow-build-s2i'] = STABLE_LABEL
+tagMap['tensorflow-serving-gpu-s2i'] = STABLE_LABEL
 
 // IRC properties
 IRC_NICK = "ai-coe-bot"
@@ -132,6 +134,20 @@ pipeline {
                     steps { // FIXME we could have a conditional build here
                         script {
                             tagMap['tensorflow-neural-style-s2i'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tensorflow-neural-style-s2i')
+                        }
+                    }                
+                }
+                stage("radanalytics: Tensorflow: S2I") {
+                    steps { // FIXME we could have a conditional build here
+                        script {
+                            tagMap['tensorflow-build-s2i'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tensorflow-build-s2i')
+                        }
+                    }                
+                }
+                stage("radanalytics: Tensorflow: Serving GPU S2I") {
+                    steps { // FIXME we could have a conditional build here
+                        script {
+                            tagMap['tensorflow-serving-gpu-s2i'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tensorflow-serving-gpu-s2i')
                         }
                     }                
                 }
