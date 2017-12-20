@@ -1,4 +1,4 @@
-FROM registry.centos.org/centos:centos7
+FROM centos/python-36-centos7
 
 LABEL name="AI-Stacks Pipeline Dependency Collector: Python: pip"
 
