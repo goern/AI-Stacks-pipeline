@@ -1,28 +1,28 @@
 apiVersion: v1
 kind: Template
 labels:
-  template: tensorflow-build-s2i-builder
+  template: tensorflow-serving-gpu-s2i-builder
 metadata:
   annotations:
-    description: tensorflow-build-s2i container
+    description: tensorflow-serving-gpu-s2i container
     iconClass: tensorflow
     tags: ai-stack-builder
-  name: tensorflow-build-s2i-builder
+  name: tensorflow-serving-gpu-s2i-builder
 objects:
 - apiVersion: v1
   kind: ImageStream
   metadata:
-    name: tensorflow-build-s2i
+    name: tensorflow-serving-gpu-s2i
   spec: {}
 - apiVersion: v1
   kind: BuildConfig
   metadata:
-    name: tensorflow-build-s2i
+    name: tensorflow-serving-gpu-s2i
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: tensorflow-build-s2i:latest
+        name: tensorflow-serving-gpu-s2i:latest
     resources: {}
     source:
       contextDir: ${REPO_CONTEXTDIR}
@@ -34,7 +34,7 @@ objects:
       dockerStrategy:
         env:
           - name: CONTAINER_NAME
-            value: tensorflow-build-s2i
+            value: tensorflow-serving-gpu-s2i
       type: Docker
     triggers:
     - type: ConfigChange
@@ -42,7 +42,7 @@ parameters:
 - description: Git repository with Dockerfile and slave entrypoint.
   displayName: Repository URL
   name: REPO_URL
-  value: https://github.com/radanalyticsio/tensorflow-build-s2i.git
+  value: https://github.com/radanalyticsio/tensorflow-serving-gpu-s2i.git
 - description: The sub-directory inside the repository.
   displayName: Context Directory
   name: REPO_CONTEXTDIR
