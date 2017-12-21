@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: jupyter-notebook-py35-builder
+metadata:
+  annotations:
+    description: jupyter-notebook-py35 container
+    iconClass: tensorflow
+    tags: ai-stack-builder
+  name: jupyter-notebook-py35-builder
+objects:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: jupyter-notebook-py35
+  spec: {}
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    name: jupyter-notebook-py35
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: jupyter-notebook-py35:latest
+    resources: {}
+    source:
+      contextDir: ${REPO_CONTEXTDIR}
+      git:
+        ref: ${REPO_REF}
+        uri: ${REPO_URL}
+      type: Git
+    strategy:
+      dockerStrategy:
+        env:
+          - name: CONTAINER_NAME
+            value: jupyter-notebook-py35
+      type: Docker
+    triggers:
+    - type: ConfigChange
+parameters:
+- description: Git repository with Dockerfile and slave entrypoint.
+  displayName: Repository URL
+  name: REPO_URL
+  value: https://github.com/radanalyticsio/jupyter-notebook-py3.5
+- description: The sub-directory inside the repository.
+  displayName: Context Directory
+  name: REPO_CONTEXTDIR
+  value: ""
+- description: The git ref or tag to use for customization.
+  displayName: Git Reference
+  name: REPO_REF
+  value: master

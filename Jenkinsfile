@@ -24,6 +24,7 @@ tagMap['gcc630-centos7'] = STABLE_LABEL
 tagMap['tensorflow-neural-style-s2i'] = STABLE_LABEL
 tagMap['tensorflow-build-s2i'] = STABLE_LABEL
 tagMap['tensorflow-serving-gpu-s2i'] = STABLE_LABEL
+tagMap['jupyter-notebook-py35'] = STABLE_LABEL
 
 // IRC properties
 IRC_NICK = "ai-coe-bot"
@@ -148,6 +149,13 @@ pipeline {
                     steps { // FIXME we could have a conditional build here
                         script {
                             tagMap['tensorflow-serving-gpu-s2i'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tensorflow-serving-gpu-s2i')
+                        }
+                    }                
+                }
+                stage("radanalytics: Jupyter: Python 3.5") {
+                    steps { // FIXME we could have a conditional build here
+                        script {
+                            tagMap['jupyter-notebook-py35'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'jupyter-notebook-py35')
                         }
                     }                
                 }
