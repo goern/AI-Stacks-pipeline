@@ -35,6 +35,8 @@ objects:
         env:
           - name: CONTAINER_NAME
             value: tensorflow-serving-gpu-s2i
+          - name: BUILD_LOGLEVEL
+            value: 2
       type: Docker
     triggers:
     - type: ConfigChange

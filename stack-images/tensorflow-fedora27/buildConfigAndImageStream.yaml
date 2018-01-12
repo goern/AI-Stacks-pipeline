@@ -65,6 +65,8 @@ objects:
         env:
         - name: CONTAINER_NAME
           value: tensorflow-fedora27-test
+        - name: BUILD_LOGLEVEL
+          value: 2
         from:
           kind: ImageStreamTag
           name: tensorflow-fedora27:${TENSORFLOW_VERSION}

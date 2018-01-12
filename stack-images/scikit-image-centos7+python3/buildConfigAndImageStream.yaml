@@ -35,6 +35,8 @@ objects:
         env:
           - name: CONTAINER_NAME
             value: scikit-image-centos7-python3
+          - name: BUILD_LOGLEVEL
+            value: 2
       type: Docker
     triggers:
     - type: ConfigChange
