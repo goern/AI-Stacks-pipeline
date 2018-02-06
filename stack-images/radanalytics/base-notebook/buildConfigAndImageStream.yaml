@@ -1,28 +1,28 @@
 apiVersion: v1
 kind: Template
 labels:
-  template: tensorflow-centos7-python3-builder
+  template: base-notebook-builder
 metadata:
   annotations:
-    description: tensorflow-centos7-python3 container
+    description: base-notebook container
     iconClass: tensorflow
     tags: ai-stack-builder
-  name: tensorflow-centos7-python3-builder
+  name: base-notebook-builder
 objects:
 - apiVersion: v1
   kind: ImageStream
   metadata:
-    name: tensorflow-centos7-python3
+    name: base-notebook
   spec: {}
 - apiVersion: v1
   kind: BuildConfig
   metadata:
-    name: tensorflow-centos7-python3
+    name: base-notebook
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: tensorflow-centos7-python3:latest
+        name: base-notebook:latest
     resources: {}
     source:
       contextDir: ${REPO_CONTEXTDIR}
@@ -34,7 +34,7 @@ objects:
       dockerStrategy:
         env:
           - name: CONTAINER_NAME
-            value: tensorflow-centos7-python3
+            value: base-notebook
           - name: BUILD_LOGLEVEL
             value: "2"
       type: Docker
@@ -44,11 +44,11 @@ parameters:
 - description: Git repository with Dockerfile and slave entrypoint.
   displayName: Repository URL
   name: REPO_URL
-  value: https://github.com/goern/AI-Stacks-pipeline.git
+  value: https://github.com/radanalyticsio/base-notebook.git
 - description: The sub-directory inside the repository.
   displayName: Context Directory
   name: REPO_CONTEXTDIR
-  value: stack-images/tensorflow-centos7+python3
+  value: ""
 - description: The git ref or tag to use for customization.
   displayName: Git Reference
   name: REPO_REF

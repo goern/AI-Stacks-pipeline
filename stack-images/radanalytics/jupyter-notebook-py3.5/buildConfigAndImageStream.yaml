@@ -36,7 +36,7 @@ objects:
           - name: CONTAINER_NAME
             value: jupyter-notebook-py35
           - name: BUILD_LOGLEVEL
-            value: 2
+            value: "2"
       type: Docker
     triggers:
     - type: ConfigChange

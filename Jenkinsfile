@@ -25,6 +25,8 @@ tagMap['tensorflow-neural-style-s2i'] = STABLE_LABEL
 tagMap['tensorflow-build-s2i'] = STABLE_LABEL
 tagMap['tensorflow-serving-gpu-s2i'] = STABLE_LABEL
 tagMap['jupyter-notebook-py35'] = STABLE_LABEL
+tagMap['tf-base-notebook'] = STABLE_LABEL
+tagMap['base-notebook'] = STABLE_LABEL
 
 // IRC properties
 IRC_NICK = "ai-coe-bot"
@@ -159,13 +161,25 @@ pipeline {
                         }
                     }                
                 }
-/*                stage("GCC 6.3.0: CentOS7") {
+                stage("radanalytics: Jupyer Notebooks") {
+                    steps { 
+                        script {
+                            tagMap['base-notebook'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'base-notebook')
+                        }
+                    }                
+                    steps {
+                        script {
+                            tagMap['tf-base-notebook'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tf-base-notebook')
+                        }
+                    }                
+                }
+                stage("GCC 6.3.0: CentOS7") {
                     steps { // FIXME we could have a conditional build here
                         script {
                             tagMap['gcc630-centos7'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "gcc630-centos7")
                         }
                     }                
-                } */
+                } 
             }
         }
         stage("Run Tests") {
