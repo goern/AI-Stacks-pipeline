@@ -166,8 +166,6 @@ pipeline {
                         script {
                             tagMap['base-notebook'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'base-notebook')
                         }
-                    }                
-                    steps {
                         script {
                             tagMap['tf-base-notebook'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tf-base-notebook')
                         }
