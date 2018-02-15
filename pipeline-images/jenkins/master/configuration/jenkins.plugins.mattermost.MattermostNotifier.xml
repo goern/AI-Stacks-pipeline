@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jenkins.plugins.mattermost.MattermostNotifier_-DescriptorImpl plugin="mattermost@2.3.0">
+  <endpoint>https://chat.openshift.io/hooks/khpp6h4u8bb6ffetjufrssgz9r</endpoint><!-- FIXME -->
+  <room>thoth-station</room>
+  <icon></icon>
+  <buildServerUrl>https://jenkins-ai-coe.apps.ci.centos.org/</buildServerUrl>
+</jenkins.plugins.mattermost.MattermostNotifier_-DescriptorImpl>
