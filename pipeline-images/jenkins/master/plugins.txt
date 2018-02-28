@@ -41,7 +41,6 @@ jsch:0.1.54.1
 junit:1.22.2
 kubernetes:1.1.2
 mailer:1.20
-mattermost:2.5.0
 managed-scripts:1.4
 mapdb-api:1.0.9.0
 matrix-auth:2.2
@@ -105,3 +104,4 @@ workflow-step-api:2.13
 workflow-support:2.16
 ws-cleanup:0.34
 xunit:1.102
+mattermost:2.5.0
