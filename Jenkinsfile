@@ -211,6 +211,8 @@ pipeline {
                     prMsg = "(PR #${env.ghprbPullId} ${env.ghprbPullAuthorLogin})"
                 }
                 def message = "${JOB_NAME} ${prMsg} build #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}"
+
+                mattermostSend channel: "#thoth-station", message: "${message} (<${env.BUILD_URL}|open>)"
                 pipelineUtils.sendIRCNotification("${IRC_NICK}", IRC_CHANNEL, message)
             }
         }
