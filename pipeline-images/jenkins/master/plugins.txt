@@ -105,3 +105,4 @@ workflow-support:2.16
 ws-cleanup:0.34
 xunit:1.102
 mattermost:2.5.0
+embeddable-build-status:1.9
