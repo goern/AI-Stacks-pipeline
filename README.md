@@ -5,6 +5,7 @@ This is a CentOS CI based pipeline to product optimized AI Stacks
 
 ```bash
 oc login ...
+oc new-project aicoe
 oc process -f pipeline-images/jenkins/jenkins-persistent-buildconfig-template.yaml | oc create -f -
 oc process -f pipeline-images/jenkins/jenkins-ai-coe-slave-buildconfig-template.yaml | oc create -f -
 oc create -f ai-stacks-pipeline.yaml
@@ -22,7 +23,7 @@ FIXME radanalytics will fail with this for-loop!
 
 ## Cleanup and Garbage Collection
 
-`oc adm prune builds --confirm --namespace ai-coe`
+`oc adm prune builds --confirm --namespace aicoe`
 
 # Known Issues
 

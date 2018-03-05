@@ -48,7 +48,6 @@ maven-plugin:3.1
 mercurial:2.2
 metrics:3.1.2.10
 momentjs:1.1.1
-monitoring:1.70.0
 multiple-scms:0.6
 node-iterator-api:1.5
 openshift-client:1.0.7
