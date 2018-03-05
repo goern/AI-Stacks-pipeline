@@ -1,32 +1,32 @@
 apiVersion: v1
 kind: Template
 labels:
-  template: jenkins-ai-coe-slave-builder
+  template: jenkins-aicoe-slave-builder
 metadata:
   annotations:
-    description: ai-coe Slaves
+    description: aicoe Slaves
     iconClass: icon-jenkins
     tags: instant-app,jenkins
-  name: jenkins-ai-coe-slave-builder
+  name: jenkins-aicoe-slave-builder
 objects:
 - apiVersion: v1
   kind: ImageStream
   metadata:
     annotations:
-      slave-label: fedora-atomic jenkins-ai-coe-slave ai-coe-slave
+      slave-label: fedora-atomic jenkins-aicoe-slave aicoe-slave
     labels:
       role: jenkins-slave
-    name: jenkins-ai-coe-slave
+    name: jenkins-aicoe-slave
   spec: {}
 - apiVersion: v1
   kind: BuildConfig
   metadata:
-    name: jenkins-ai-coe-slave
+    name: jenkins-aicoe-slave
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: jenkins-ai-coe-slave:latest
+        name: jenkins-aicoe-slave:latest
     resources: {}
     source:
       contextDir: ${CONTEXTDIR}

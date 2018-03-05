@@ -2,6 +2,7 @@
 OPENSHIFT_NAMESPACE = 'ai-coe'
 OPENSHIFT_SERVICE_ACCOUNT = 'jenkins'
 DOCKER_REPO_URL = '172.30.254.79:5000'
+CI_NAMESPACE= 'aicoe'
 
 // Defaults for SCM operations
 env.ghprbGhRepository = env.ghprbGhRepository ?: 'goern/AI-Stacks-pipeline'
@@ -71,7 +72,7 @@ pipeline {
             containerTemplate {
                 name 'jnlp'
                 args '${computer.jnlpmac} ${computer.name}'
-                image DOCKER_REPO_URL + '/continuous-infra/jenkins-continuous-infra-slave:' + STABLE_LABEL
+                image DOCKER_REPO_URL + '/'+ CI_NAMESPACE +'/jenkins-aiceo-slave:' + STABLE_LABEL
                 ttyEnabled false
                 command ''
             }
