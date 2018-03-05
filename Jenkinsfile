@@ -30,7 +30,7 @@ tagMap['base-notebook'] = STABLE_LABEL
 
 // IRC properties
 IRC_NICK = "ai-coe-bot"
-IRC_CHANNEL = "#AI-CoE"
+IRC_CHANNEL = "#thoth-station"
 
 properties(
     [
