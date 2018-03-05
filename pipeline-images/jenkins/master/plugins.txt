@@ -7,7 +7,6 @@ authentication-tokens:1.3
 blueocean:1.4.2
 bouncycastle-api:2.16.2
 branch-api:2.0.16
-cloudbees-bitbucket-branch-source:2.2.7
 cloudbees-folder:6.2.1
 conditional-buildstep:1.3.6
 config-file-provider:2.16.4
@@ -38,7 +37,7 @@ jms-messaging:1.0.31
 job-dsl:1.66
 jquery-detached:1.2.1
 jsch:0.1.54.1
-junit:1.22.2
+junit:1.23
 kubernetes:1.1.2
 mailer:1.20
 managed-scripts:1.4
@@ -63,7 +62,7 @@ pipeline-graph-analysis:1.5
 pipeline-input-step:2.8
 pipeline-milestone-step:1.3.1
 pipeline-model-api:1.2.5
-pipeline-model-declarative-agent:1.1.1
+pipeline-model-declarative-agent:1.2.5
 pipeline-model-definition:1.2.5
 pipeline-model-extensions:1.2.5
 pipeline-rest-api:2.9
@@ -92,7 +91,7 @@ vsphere-cloud:2.16
 windows-slaves:1.3.1
 workflow-aggregator:2.5
 workflow-api:2.26
-workflow-basic-steps:2.6
+workflow-basic-steps:2.14
 workflow-cps:2.41
 workflow-cps-global-lib:2.9
 workflow-durable-task-step:2.17

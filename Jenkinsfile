@@ -212,7 +212,7 @@ pipeline {
                 }
                 def message = "${JOB_NAME} ${prMsg} build #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}"
 
-                mattermostSend channel: "#thoth-station", message: "${message} (<${env.BUILD_URL}|open>)"
+                mattermostSend channel: "#thoth-station", icon: 'https://avatars1.githubusercontent.com/u/33906690', message: "${message} ${env.BUILD_URL}"
                 pipelineUtils.sendIRCNotification("${IRC_NICK}", IRC_CHANNEL, message)
             }
         }
