@@ -13,7 +13,7 @@ objects:
   kind: ImageStream
   metadata:
     annotations:
-      slave-label: fedora-atomic jenkins-aicoe-slave aicoe-slave
+      slave-label: aiceo jenkins-aicoe-slave aicoe-slave
     labels:
       role: jenkins-slave
     name: jenkins-aicoe-slave
