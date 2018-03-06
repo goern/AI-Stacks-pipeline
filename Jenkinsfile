@@ -98,92 +98,88 @@ pipeline {
                 }
             }
         }
-        if (env.BRANCH_NAME == 'master') {
-            stage("Build Container Images") {
-                    parallel {
-                        stage("Tensorflow: Fedora27") {
-                            steps { // FIXME we could have a conditional build here
-                                echo "Building Tensorflow container image..."
-                                script {
-                                    tagMap['tensorflow-fedora27'] = aIStacksPipelineUtils.buildImageWithTag(OPENSHIFT_NAMESPACE, "tensorflow-fedora27", '1.4.1')
-                                }
+        stage("Build Container Images") {
+                parallel {
+                    stage("Tensorflow: Fedora27") {
+                        steps { // FIXME we could have a conditional build here
+                            echo "Building Tensorflow container image..."
+                            script {
+                                tagMap['tensorflow-fedora27'] = aIStacksPipelineUtils.buildImageWithTag(OPENSHIFT_NAMESPACE, "tensorflow-fedora27", '1.4.1')
+                            }
 
-                                echo "Building Tensorflow Test container image..."
-                                script {
-                                    tagMap['tensorflow-fedora27-test'] = aIStacksPipelineUtils.buildImageWithTag(OPENSHIFT_NAMESPACE, "tensorflow-fedora27-test", '1.4.1')
-                                }
-                            }          
-                        }
-                        stage("Tensorflow: CentOS7+Python3") {
-                            steps { // FIXME we could have a conditional build here
-                                script {
-                                    tagMap['tensorflow-centos7-python3'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "tensorflow-centos7-python3")
-                                }
-                            }                
-                        }
-                        stage("Scikit-Image: CentOS7+Python3") {
-                            steps { // FIXME we could have a conditional build here
-                                script {
-                                    tagMap['scikit-image-centos7-python3'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "scikit-image-centos7-python3")
-                                }
-                            }                
-                        }
-                        stage("Scikit-Image: CentOS7+Python2") {
-                            steps { // FIXME we could have a conditional build here
-                                script {
-                                    tagMap['scikit-image-centos7-python2'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "scikit-image-centos7-python2")
-                                }
-                            }                
-                        }
-                        stage("radanalytics: Tensorflow: Neural-Style S2I") {
-                            steps { // FIXME we could have a conditional build here
-                                script {
-                                    tagMap['tensorflow-neural-style-s2i'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tensorflow-neural-style-s2i')
-                                }
-                            }                
-                        }
-                        stage("radanalytics: Tensorflow: S2I") {
-                            steps { // FIXME we could have a conditional build here
-                                script {
-                                    tagMap['tensorflow-build-s2i'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tensorflow-build-s2i')
-                                }
-                            }                
-                        }
-                        stage("radanalytics: Tensorflow: Serving GPU S2I") {
-                            steps { // FIXME we could have a conditional build here
-                                script {
-                                    tagMap['tensorflow-serving-gpu-s2i'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tensorflow-serving-gpu-s2i')
-                                }
-                            }                
-                        }
-                        stage("radanalytics: Jupyter: Python 3.5") {
-                            steps { // FIXME we could have a conditional build here
-                                script {
-                                    tagMap['jupyter-notebook-py35'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'jupyter-notebook-py35')
-                                }
-                            }                
-                        }
-                        stage("radanalytics: Jupyer Notebooks") {
-                            steps { 
-                                script {
-                                    tagMap['base-notebook'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'base-notebook')
-                                }
-                                script {
-                                    tagMap['tf-base-notebook'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tf-base-notebook')
-                                }
-                            }                
-                        }
-                        stage("GCC 6.3.0: CentOS7") {
-                            steps { // FIXME we could have a conditional build here
-                                script {
-                                    tagMap['gcc630-centos7'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "gcc630-centos7")
-                                }
-                            }                
-                        } 
+                            echo "Building Tensorflow Test container image..."
+                            script {
+                                tagMap['tensorflow-fedora27-test'] = aIStacksPipelineUtils.buildImageWithTag(OPENSHIFT_NAMESPACE, "tensorflow-fedora27-test", '1.4.1')
+                            }
+                        }          
                     }
-            }
-        } else {
-            echo "Not building container images on branch ${env.BRANCH_NAME}"
+                    stage("Tensorflow: CentOS7+Python3") {
+                        steps { // FIXME we could have a conditional build here
+                            script {
+                                tagMap['tensorflow-centos7-python3'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "tensorflow-centos7-python3")
+                            }
+                        }                
+                    }
+                    stage("Scikit-Image: CentOS7+Python3") {
+                        steps { // FIXME we could have a conditional build here
+                            script {
+                                tagMap['scikit-image-centos7-python3'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "scikit-image-centos7-python3")
+                            }
+                        }                
+                    }
+                    stage("Scikit-Image: CentOS7+Python2") {
+                        steps { // FIXME we could have a conditional build here
+                            script {
+                                tagMap['scikit-image-centos7-python2'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "scikit-image-centos7-python2")
+                            }
+                        }                
+                    }
+                    stage("radanalytics: Tensorflow: Neural-Style S2I") {
+                        steps { // FIXME we could have a conditional build here
+                            script {
+                                tagMap['tensorflow-neural-style-s2i'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tensorflow-neural-style-s2i')
+                            }
+                        }                
+                    }
+                    stage("radanalytics: Tensorflow: S2I") {
+                        steps { // FIXME we could have a conditional build here
+                            script {
+                                tagMap['tensorflow-build-s2i'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tensorflow-build-s2i')
+                            }
+                        }                
+                    }
+                    stage("radanalytics: Tensorflow: Serving GPU S2I") {
+                        steps { // FIXME we could have a conditional build here
+                            script {
+                                tagMap['tensorflow-serving-gpu-s2i'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tensorflow-serving-gpu-s2i')
+                            }
+                        }                
+                    }
+                    stage("radanalytics: Jupyter: Python 3.5") {
+                        steps { // FIXME we could have a conditional build here
+                            script {
+                                tagMap['jupyter-notebook-py35'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'jupyter-notebook-py35')
+                            }
+                        }                
+                    }
+                    stage("radanalytics: Jupyer Notebooks") {
+                        steps { 
+                            script {
+                                tagMap['base-notebook'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'base-notebook')
+                            }
+                            script {
+                                tagMap['tf-base-notebook'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, 'tf-base-notebook')
+                            }
+                        }                
+                    }
+                    stage("GCC 6.3.0: CentOS7") {
+                        steps { // FIXME we could have a conditional build here
+                            script {
+                                tagMap['gcc630-centos7'] = pipelineUtils.buildStableImage(OPENSHIFT_NAMESPACE, "gcc630-centos7")
+                            }
+                        }                
+                    } 
+                }
         }
         stage("Run Tests") {
             failFast true
