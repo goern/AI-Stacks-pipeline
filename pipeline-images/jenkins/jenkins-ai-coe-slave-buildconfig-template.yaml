@@ -43,11 +43,11 @@ parameters:
 - description: Git repository with Dockerfile and slave entrypoint.
   displayName: Repository URL
   name: REPO_URL
-  value: https://github.com/CentOS-PaaS-SIG/ci-pipeline.git
+  value: https://github.com/goern/AI-Stacks-pipeline.git
 - description: The sub-directory inside the repository.
   displayName: Context Directory
   name: CONTEXTDIR
-  value: config/s2i/jenkins/slave
+  value: pipeline-images/jenkins/slave
 - description: The git ref or tag to use for customization.
   displayName: Git Reference
   name: REPO_REF
