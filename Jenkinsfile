@@ -1,7 +1,7 @@
 // Openshift project
 OPENSHIFT_NAMESPACE = 'ai-coe'
 OPENSHIFT_SERVICE_ACCOUNT = 'jenkins'
-DOCKER_REPO_URL = '172.30.254.79:5000'
+DOCKER_REPO_URL = 'docker-registry.default.svc.cluster.local:5000'
 CI_NAMESPACE= 'aicoe'
 
 // Defaults for SCM operations
