@@ -27,4 +27,13 @@ class aIStacksPipelineUtils implements Serializable {
     def buildImageWithTag(String openshiftProject, String buildConfig, String tag) {
         return aIStacksPipelineUtils.buildImageWithTag(openshiftProject, buildConfig, tag)
     }
+
+   /**
+    * send buildlog to remote service endpoint
+    * @param buildName name of the Build
+    * @return
+    */
+    def sendBuildlogToURL(String buildName) {
+        return aIStacksPipelineUtils.sendBuildlogToURL(buildName)
+    }
 }

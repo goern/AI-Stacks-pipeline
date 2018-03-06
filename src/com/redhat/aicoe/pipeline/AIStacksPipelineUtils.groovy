@@ -52,3 +52,14 @@ def buildImageWithTag(String openshiftProject, String buildConfig, String tag) {
         }
     }
 }
+
+/**
+ * send buildlog to remote service endpoint
+ * @param buildName name of the Build
+ * @return
+ */
+def sendBuildlogToURL(String buildName) {
+    def response = httpRequest "http://httpbin.org/response-headers?buildName=${buildName}"
+
+    echo ${response}
+}
