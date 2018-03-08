@@ -90,14 +90,14 @@ pipeline {
                         steps { // FIXME we could have a conditional build here
                             echo "Building Tensorflow container image..."
                             script {
-                                tagMap['master'] = aIStacksPipelineUtils.buildImageWithTag(CI_NAMESPACE, "jenkins", '1.0.0')
+                                tagMap['master'] = pipelineUtils.buildStableImage(CI_NAMESPACE, "jenkins")
                             }
                         }          
                     }
                     stage("Jenkins Slave") {
                         steps { // FIXME we could have a conditional build here
                             script {
-                                tagMap['slave'] = aIStacksPipelineUtils.buildImageWithTag(CI_NAMESPACE, "jenkins-ai-coe-slave", '1.0.0')
+                                tagMap['slave'] = pipelineUtils.buildStableImage(CI_NAMESPACE, "jenkins-ai-coe-slave")
                             }
                         }                
                     }
