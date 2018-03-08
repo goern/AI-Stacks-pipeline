@@ -18,6 +18,7 @@ tagMap['slave'] = '1.0.0'
 // IRC properties
 IRC_NICK = "aicoe-bot"
 IRC_CHANNEL = "#thoth-station"
+BOT_ICON = 'https://avatars1.githubusercontent.com/u/33906690'
 
 properties(
     [
@@ -135,8 +136,8 @@ pipeline {
                 }
                 def message = "${JOB_NAME} ${prMsg} build #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}"
 
-                mattermostSend channel: ${IRC_CHANNEL}, icon: 'https://avatars1.githubusercontent.com/u/33906690', message: "${message} ${env.BUILD_URL}"
-                pipelineUtils.sendIRCNotification("${IRC_NICK}", ${IRC_CHANNEL}, message)
+                mattermostSend channel: IRC_CHANNEL, icon: BOT_ICON, message: "${message} ${env.BUILD_URL}"
+                pipelineUtils.sendIRCNotification(IRC_NICK, IRC_CHANNEL, message)
             }
         }
         success {
