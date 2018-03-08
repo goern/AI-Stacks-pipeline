@@ -18,6 +18,7 @@ docker-commons:1.11
 docker-workflow:1.15.1
 durable-task:1.16
 favorite:2.3.1
+ghprb:1.40.0
 git:3.8.0
 git-client:2.7.1
 github:1.29.0
