@@ -60,7 +60,7 @@ objects:
     output:
       to:
         kind: ImageStreamTag
-        name: jenkins:latest
+        name: jenkins:test
     resources:
       limits:
         memory: ${MEMORY_LIMIT}

@@ -59,7 +59,7 @@ pipeline {
             containerTemplate {
                 name 'jnlp'
                 args '${computer.jnlpmac} ${computer.name}'
-                image DOCKER_REPO_URL + '/'+ CI_NAMESPACE +'/jenkins-aiceo-slave:' + STABLE_LABEL
+                image DOCKER_REPO_URL + '/'+ CI_NAMESPACE +'/jenkins-ai-ceo-slave:' + STABLE_LABEL
                 ttyEnabled false
                 command ''
             }
@@ -89,7 +89,7 @@ pipeline {
                 parallel {
                     stage("Jenkins Master") {
                         steps { // FIXME we could have a conditional build here
-                            echo "Building Tensorflow container image..."
+                            echo "Building AICOE Jenkins master container image..."
                             script {
                                 tagMap['master'] = pipelineUtils.buildStableImage(CI_NAMESPACE, "jenkins")
                             }
@@ -97,8 +97,9 @@ pipeline {
                     }
                     stage("Jenkins Slave") {
                         steps { // FIXME we could have a conditional build here
+                            echo "Building AICOE Jenkins slave container image..."
                             script {
-                                tagMap['slave'] = pipelineUtils.buildStableImage(CI_NAMESPACE, "jenkins-ai-coe-slave")
+                                tagMap['slave'] = pipelineUtils.buildStableImage(CI_NAMESPACE, "jenkins-aicoe-slave")
                             }
                         }                
                     }
@@ -136,7 +137,7 @@ pipeline {
                 }
                 def message = "${JOB_NAME} ${prMsg} build #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}"
 
-                mattermostSend channel: IRC_CHANNEL, icon: BOT_ICON, message: "${message} ${env.BUILD_URL}"
+                mattermostSend channel: IRC_CHANNEL, icon: BOT_ICON, message: message
                 pipelineUtils.sendIRCNotification(IRC_NICK, IRC_CHANNEL, message)
             }
         }
