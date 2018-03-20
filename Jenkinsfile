@@ -1,7 +1,7 @@
 // Openshift project
 OPENSHIFT_SERVICE_ACCOUNT = 'jenkins'
 DOCKER_REPO_URL = 'docker-registry.default.svc.cluster.local:5000'
-CI_NAMESPACE= env.CI_NAMESPACE ?: 'ai-coe'
+CI_NAMESPACE= env.CI_PIPELINE_NAMESPACE ?: 'ai-coe'
 
 // Defaults for SCM operations
 env.ghprbGhRepository = env.ghprbGhRepository ?: 'AICoE/AI-Stacks-pipeline'
