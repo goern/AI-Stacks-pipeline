@@ -49,6 +49,7 @@ def buildImageWithTag(String openshiftProject, String buildConfig, String tag) {
             openshift.tag("${openshiftProject}/${buildConfig}@${imageHash}",
                         "${openshiftProject}/${buildConfig}:${tag}")
 
+            return "${tag}"
         }
     }
 }
@@ -62,4 +63,22 @@ def sendBuildlogToURL(String buildName) {
     def response = httpRequest "http://httpbin.org/response-headers?buildName=${buildName}"
 
     echo ${response}
+}
+
+/**
+ * Redeploy with a specific ImageStreamTag, we just tag, redeploymeny is handled via OpenShift ImageChange Trigger
+ * @param projectName 
+ * @param buildConfig
+ * @param imageStreamTag
+ * @return
+ */
+def redeployFromImageStreamTag(String projectName, String buildConfig, String imageStreamTag) {
+    openshift.withCluster() {
+        openshift.withProject(projectName) {
+            echo "Creating stable tag for ${projectName}/${buildConfig}: ${buildConfig}:${imageStreamTag}"
+
+            openshift.tag("${projectName}/${buildConfig}:${imageStreamTag}",
+                        "${projectName}/${buildConfig}:stable")
+        }
+    }
 }

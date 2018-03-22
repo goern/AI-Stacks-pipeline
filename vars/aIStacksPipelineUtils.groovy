@@ -36,4 +36,15 @@ class aIStacksPipelineUtils implements Serializable {
     def sendBuildlogToURL(String buildName) {
         return aIStacksPipelineUtils.sendBuildlogToURL(buildName)
     }
+
+    /**
+     * Redeploy to a specific ImageStreamTag
+     * @param projectName 
+     * @param buildConfig
+     * @param imageStreamTag
+     * @return
+     */
+    def redeployFromImageStreamTag(String projectName, String buildConfig, String imageStreamTag) {
+        return aIStacksPipelineUtils.redeployFromImageStreamTag(projectName, buildConfig, imageStreamTag)
+    }
 }
