@@ -48,8 +48,6 @@ def buildImageWithTag(String openshiftProject, String buildConfig, String tag) {
 
             openshift.tag("${openshiftProject}/${buildConfig}@${imageHash}",
                         "${openshiftProject}/${buildConfig}:${tag}")
-
-            return "${tag}"
         }
     }
 }
