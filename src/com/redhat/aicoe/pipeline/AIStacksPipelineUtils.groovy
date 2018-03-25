@@ -21,7 +21,7 @@ def createBuildConfigs(String openshiftProject) { // TODO can we set a default v
  * @param openshiftProject OpenShift Project
  * @param buildConfig
  * @param tag
- * @return
+ * @return tag
  */
 def buildImageWithTag(String openshiftProject, String buildConfig, String tag) {
     // - build in OpenShift
@@ -48,6 +48,8 @@ def buildImageWithTag(String openshiftProject, String buildConfig, String tag) {
 
             openshift.tag("${openshiftProject}/${buildConfig}@${imageHash}",
                         "${openshiftProject}/${buildConfig}:${tag}")
+
+            return "${tag}"
         }
     }
 }
