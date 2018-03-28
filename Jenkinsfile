@@ -137,15 +137,20 @@ pipeline {
                 }
                 def message = "${JOB_NAME} ${prMsg} build #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}"
 
-                mattermostSend channel: IRC_CHANNEL, icon: BOT_ICON, message: message
                 pipelineUtils.sendIRCNotification(IRC_NICK, IRC_CHANNEL, message)
             }
         }
         success {
-            echo "All Systems GO!"
+            script {
+                echo "All Systems GO!"
+            }
         }
         failure {
-            error "BREAK BREAK BREAK - build failed!"
+            script {
+                mattermostSend channel: IRC_CHANNEL, icon: BOT_ICON, message: "${JOB_NAME} build #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}"
+
+                error "BREAK BREAK BREAK - build failed!"
+            }
         }
     }
 }
