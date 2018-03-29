@@ -36,7 +36,6 @@ instant-messaging:1.35
 ircbot:2.30
 jackson2-api:2.8.11.1
 javadoc:1.4
-jira:2.5
 jms-messaging:1.0.31
 job-dsl:1.68
 jquery-detached:1.2.1
