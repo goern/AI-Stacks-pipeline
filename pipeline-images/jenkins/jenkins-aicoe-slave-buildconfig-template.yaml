@@ -13,7 +13,7 @@ objects:
   kind: ImageStream
   metadata:
     annotations:
-      slave-label: aicoe jenkins-aicoe-slave aicoe-slave ai-coe jenkins-ai-coe-slave ai-coe-slave
+      slave-label: aicoe jenkins-aicoe-slave aicoe-slave ai-coe jenkins-ai-coe-slave ai-coe-slave thoth-master
     labels:
       role: jenkins-slave
     name: jenkins-aicoe-slave
@@ -26,7 +26,7 @@ objects:
     output:
       to:
         kind: ImageStreamTag
-        name: jenkins-aicoe-slave:test
+        name: "jenkins-aicoe-slave:${IMAGE_STREAM_TAG}"
     resources: {}
     source:
       contextDir: ${CONTEXTDIR}
@@ -52,3 +52,7 @@ parameters:
   displayName: Git Reference
   name: REPO_REF
   value: master
+- description: The Tag to be used for the resulting container image.
+  displayName: Tag of the build
+  name: IMAGE_STREAM_TAG
+  value: test
