@@ -13,7 +13,7 @@ objects:
   kind: ImageStream
   metadata:
     annotations:
-      slave-label: aicoe jenkins-aicoe-slave aicoe-slave ai-coe jenkins-ai-coe-slave ai-coe-slave ai-stacks-pipeline-master thoth-master
+      slave-label: aicoe thoth jenkins-aicoe-slave aicoe-slave ai-coe jenkins-ai-coe-slave ai-coe-slave ai-stacks-pipeline-master thoth-master
     labels:
       role: jenkins-slave
     name: jenkins-aicoe-slave
