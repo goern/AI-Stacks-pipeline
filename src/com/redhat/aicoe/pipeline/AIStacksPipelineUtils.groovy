@@ -44,7 +44,7 @@ def buildImageWithTag(String openshiftProject, String buildConfig, String tag) {
             ).trim()
             echo "imageHash: ${imageHash}"
 
-            echo "Creating stable tag for ${openshiftProject}/${buildConfig}: ${buildConfig}:${tag}"
+            echo "Creating tag for ${openshiftProject}/${buildConfig}: ImageStreamTag: ${buildConfig}:${tag}"
 
             openshift.tag("${openshiftProject}/${buildConfig}@${imageHash}",
                         "${openshiftProject}/${buildConfig}:${tag}")
