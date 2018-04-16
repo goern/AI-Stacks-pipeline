@@ -7,7 +7,7 @@ This is a CentOS CI based pipeline to product optimized AI Stacks
 oc login ...
 oc new-project aicoe
 oc process -f pipeline-images/jenkins/jenkins-persistent-buildconfig-template.yaml | oc create -f -
-oc process -f pipeline-images/jenkins/jenkins-ai-coe-slave-buildconfig-template.yaml | oc create -f -
+oc process -f pipeline-images/jenkins/jenkins-aicoe-slave-buildconfig-template.yaml | oc create -f -
 oc create -f ai-stacks-pipeline.yaml
 ```
 
