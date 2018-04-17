@@ -1,9 +1,10 @@
 ---
 kind: Template
 apiVersion: v1
+labels:
+  template: jenkins-persistent
 metadata:
   name: jenkins-persistent
-  creationTimestamp:
   annotations:
     openshift.io/display-name: Jenkins (Persistent)
     description: |-
@@ -21,6 +22,7 @@ metadata:
 message: A Jenkins service has been created in your project.  Log into Jenkins with
   your OpenShift account.  The tutorial at https://github.com/openshift/origin/blob/master/examples/jenkins/README.md
   contains more information about using this template.
+
 objects:
 - apiVersion: v1
   kind: ImageStream
@@ -50,8 +52,23 @@ objects:
     resources:
       requests:
         storage: "${VOLUME_CAPACITY}"
-- apiVersion: v1
-  kind: BuildConfig
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    name: jenkins-2-centos7
+  spec:
+    lookupPolicy:
+      local: true
+    tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: registry.centos.org/openshift/jenkins-2-centos7latest
+      importPolicy: {}
+      referencePolicy:
+        type: Source
+- kind: BuildConfig
+  apiVersion: v1
   metadata:
     labels:
       app: jenkins
@@ -75,8 +92,7 @@ objects:
       sourceStrategy:
         from:
           kind: ImageStreamTag
-          name: jenkins:2
-          namespace: openshift
+          name: jenkins-2-centos7:latest
       type: Source
     triggers:
     - type: ConfigChange
@@ -225,6 +241,7 @@ objects:
       name: "${JENKINS_SERVICE_NAME}"
     type: ClusterIP
     sessionAffinity: None
+
 parameters:
 - description: Git source URI for Jenkins S2I
   name: REPO_URL
@@ -266,6 +283,5 @@ parameters:
   displayName: Jenkins ImageStreamTag
   description: Name of the ImageStreamTag to be used for the Jenkins image.
   value: jenkins:latest
-labels:
-  template: jenkins-persistent
+
 
