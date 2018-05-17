@@ -52,7 +52,7 @@ RUN INSTALL_PKGS="autoconf \
   unzip \
   wget \
   which \
-  zlib-devel rh-python36 rh-python36-python-devel rh-python36-python-setuptools rh-python36-python-pip nss_wrapper epel-release ansible jq" && \
+  zlib-devel rh-python36 rh-python36-python-devel rh-python36-python-setuptools rh-python36-python-pip nss_wrapper epel-release ansible" && \
     yum install -y centos-release-scl && \
     yum -y --setopt=tsflags=nodocs install --enablerepo=centosplus $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
