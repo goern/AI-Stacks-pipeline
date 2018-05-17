@@ -48,7 +48,6 @@ RUN INSTALL_PKGS="autoconf \
   patch \
   postgresql-devel \
   procps-ng \
-  ${NODEJS_SCL}-npm \
   sqlite-devel \
   unzip \
   wget \
