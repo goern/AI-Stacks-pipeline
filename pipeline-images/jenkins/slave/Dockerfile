@@ -1,4 +1,4 @@
-FROM openshift/jenkins-slave-base-centos7:v3.6
+FROM centos7/jenkins-slave-base-centos7:v3.6
 
 ENV PYTHON_VERSION=3.6 \
     PATH=$HOME/.local/bin/:$PATH \
