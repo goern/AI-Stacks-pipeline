@@ -14,6 +14,7 @@ tagMap = [:]
 // Initialize
 tagMap['master'] = '1.0.0'
 tagMap['slave'] = '1.0.0'
+tagMap['slave-python36'] = '1.0.0'
 
 // IRC properties
 IRC_NICK = "aicoe-bot"
@@ -100,6 +101,14 @@ pipeline {
                             echo "Building AICOE Jenkins slave container image..."
                             script {
                                 tagMap['slave'] = pipelineUtils.buildStableImage(CI_NAMESPACE, "jenkins-aicoe-slave")
+                            }
+                        }                
+                    }
+                    stage("Jenkins Python36 Slave") {
+                        steps { // FIXME we could have a conditional build here
+                            echo "Building Python36 Jenkins slave container image..."
+                            script {
+                                tagMap['slave-python36'] = pipelineUtils.buildStableImage(CI_NAMESPACE, "jenkins-aicoe-slave-python36")
                             }
                         }                
                     }
